@@ -1,20 +1,23 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Categorias
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-searchbar placeholder="Buscar" [(ngModel)]="valorBusqueda" (ionChange)="filtrarCategorias()"></ion-searchbar>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list> 
+            
+    <ion-item [routerLink]="'/Page1Page/' + categoria.strCategory"*ngFor="let categoria of categoriasFiltradas; let index"> 
+      <ion-avatar slot="start">
+        <img [src]="categoria.strCategoryThumb" alt="avatar" />
+      </ion-avatar>
+      <ion-label>{{ categoria.strCategory }}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll>
+  </ion-infinite-scroll>
 </ion-content>
